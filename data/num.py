@@ -1,49 +1,41 @@
 import math
-import random
+import cfunctions
 
-the = {}
-
-
-def per(t, p):
-    p = math.floor(((p or 0.5) * len(t)) + 0.5)
-    return t[max(1, min(len(t), p))]
-
-
-class num:
-    def __init__(self, c, s):
-        self.n = 0  # items seen
-        self.at = c if c else 0  # column  position
-        self.name = s or ""  # column name
-        self._has = {}  # kept data
-        self.lo = math.inf
-        self.hi = -math.inf
+class Num:
+    def __init__(self, c=0, s=""):
+        self.n = 0
+        self.at = c
+        self.name = s
+        self._has = {}
+        self.lo = math.huge
+        self.hi = -math.huge
         self.isSorted = True
-        # self.w = s or ""
+        self.w = (s.find("-$") and -1 or 1)
+
 
     def nums(self):
         if not self.isSorted:
-            pass
-            # table.sort(self._has)
-        else:
+            table.sort(self._has)
             self.isSorted = True
         return self._has
 
     def add(self, v, pos):
         if v != "?":
             self.n += 1
-            self.lo = min(v, self.lo)
-            self.hi = max(v, self.hi)
-            if len(self._has) < the.nums:
-                pos = 1 + len(self._has)
-            elif random.random() < the.nums / self.n:
-                pos = random.random(len(self._has))
+            self.lo = math.min(v, self.lo)
+            self.hi = math.max(v, self.hi)
+            if self._has < the.nums:
+                pos = 1 + (#self._has) 
+            elif math.random() < the.nums/self.n:
+                pos=math.random(#self._has)
             if pos:
-                self.isSorted = False
-                self._has[pos] = float(v)
+                self.isSorted = false
+                self._has[pos] = tonumber(v)
 
-    def div(self,):
-        a = self.nums()
-        return (per(a, 0.9) - per(a, 0.1)) / 2.58
+    def div(self, a):
+        a = self:nums(); 
+        return per(a,.9)-per(a,.1))/2.58 
+
 
     def mid(self):
-        return per(self.nums(), 0.5)
+        return per((self))

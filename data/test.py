@@ -1,8 +1,7 @@
 from coerce import *
 from cli import *
-from Num import *
-from Sym import *
-from Data import *
+from num import *
+from sym import *
 
 updateCli()
 eg = {}

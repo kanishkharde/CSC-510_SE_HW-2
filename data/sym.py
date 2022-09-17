@@ -1,33 +1,32 @@
 import math
+
 class Sym:
-    def __init__(self, c, s):
-        self.n = 0                  
-        self.at = c if c else 0     
-        self.name = s or ""         
-        self._has = {}              
-    
+    def __init__(self, c=0, s=""):
+        self.n = 0
+        self.at = c
+        self.name = s
+        self._has = {}
+
+
     def add(self, v):
-        if v != "?":
+        if v != '?':
             self.n += 1
-            if v in self._has:
-                self._has[v] +=1
-            else:
-                self._has[v] = 1
+            self_has[v] = 1 + (self._has[v] or 0)
 
-    def mid(self):
+    def mid(self, col, most, mode):
         most = -1
-        for k, v in self._has.items():
-            print((k,v))
+        for k,v in enumerate(self._has):
             if v > most:
-                mode = k
-                most = v
-        return mode
+                most = k, v
+        return most
 
-    def div(self):
-        def fun(p):
-            return p * math.log(p, 2)
+    def fun(self, p):
+        return p*math.log(p,2)
+
+    def div(self, e, fun):
         e = 0
-        for _, _n in self._has.items():
-            if _n > 0:
-                e = e - fun(_n/self.n)
+        for _,n in enumerate(self._has):
+            if n>0:
+                e = e - seelf.fun(n/self.n)
         return e
+
